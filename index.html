@@ -437,6 +437,97 @@
             font-size: 0.85rem;
         }
 
+        /* Mobile Responsive */
+        @media (max-width: 768px) {
+            .header {
+                flex-direction: column;
+                text-align: center;
+                padding: 20px;
+            }
+
+            .photo {
+                width: 120px;
+                height: 120px;
+            }
+
+            .name {
+                font-size: 1.8rem;
+            }
+
+            .title {
+                font-size: 0.9rem;
+            }
+
+            .contact-bar {
+                flex-direction: column;
+                gap: 10px;
+                align-items: center;
+            }
+
+            .main-content {
+                grid-template-columns: 1fr;
+            }
+
+            .right-column {
+                order: -1;
+            }
+
+            .left-column, .right-column {
+                padding: 20px;
+            }
+
+            .highlight-list {
+                grid-template-columns: 1fr;
+            }
+
+            .teaching-table {
+                font-size: 0.8rem;
+            }
+
+            .teaching-table th, .teaching-table td {
+                padding: 8px 5px;
+            }
+
+            .skill-tags {
+                justify-content: center;
+            }
+
+            .exp-header {
+                flex-direction: column;
+                gap: 5px;
+            }
+
+            .social-links {
+                flex-direction: row;
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+
+            .social-link {
+                flex: 1;
+                min-width: 140px;
+                justify-content: center;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .name {
+                font-size: 1.5rem;
+            }
+
+            .section-title {
+                font-size: 1rem;
+            }
+
+            .edu-degree, .exp-title {
+                font-size: 0.9rem;
+            }
+
+            .tool-item, .congress-item {
+                padding: 10px;
+            }
+        }
+
         /* Print Styles */
         @media print {
             body {

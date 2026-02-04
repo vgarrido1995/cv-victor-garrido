@@ -1,0 +1,766 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CV - Víctor Garrido</title>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&family=Open+Sans:wght@300;400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --primary: #1a365d;
+            --secondary: #2c5282;
+            --accent: #3182ce;
+            --light-blue: #ebf8ff;
+            --dark: #1a202c;
+            --gray: #718096;
+            --light-gray: #e2e8f0;
+            --white: #ffffff;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Open Sans', sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            padding: 20px;
+        }
+
+        .cv-container {
+            max-width: 1000px;
+            margin: 0 auto;
+            background: var(--white);
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+            border-radius: 0;
+        }
+
+        /* Header Section */
+        .header {
+            background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
+            color: var(--white);
+            padding: 40px;
+            display: flex;
+            align-items: center;
+            gap: 30px;
+        }
+
+        .photo-container {
+            flex-shrink: 0;
+        }
+
+        .photo {
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            border: 4px solid rgba(255,255,255,0.3);
+            object-fit: cover;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+        }
+
+        .header-info {
+            flex-grow: 1;
+        }
+
+        .name {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 5px;
+            letter-spacing: 1px;
+        }
+
+        .title {
+            font-size: 1.1rem;
+            font-weight: 300;
+            opacity: 0.9;
+            margin-bottom: 20px;
+        }
+
+        .contact-bar {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+            font-size: 0.9rem;
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .contact-item i {
+            color: var(--accent);
+            background: rgba(255,255,255,0.2);
+            padding: 8px;
+            border-radius: 50%;
+            font-size: 0.8rem;
+        }
+
+        .contact-item a {
+            color: var(--white);
+            text-decoration: none;
+        }
+
+        .contact-item a:hover {
+            text-decoration: underline;
+        }
+
+        /* Main Content */
+        .main-content {
+            display: grid;
+            grid-template-columns: 1fr 320px;
+        }
+
+        .left-column {
+            padding: 30px;
+        }
+
+        .right-column {
+            background: var(--light-blue);
+            padding: 30px;
+        }
+
+        /* Section Styles */
+        .section {
+            margin-bottom: 30px;
+        }
+
+        .section-title {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 1.2rem;
+            font-weight: 600;
+            color: var(--primary);
+            margin-bottom: 15px;
+            padding-bottom: 8px;
+            border-bottom: 3px solid var(--accent);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .section-title i {
+            color: var(--accent);
+            font-size: 1rem;
+        }
+
+        /* Profile */
+        .profile-text {
+            color: var(--dark);
+            line-height: 1.7;
+            text-align: justify;
+        }
+
+        .highlight-list {
+            list-style: none;
+            margin-top: 15px;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 8px;
+        }
+
+        .highlight-list li {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            color: var(--dark);
+            font-size: 0.9rem;
+        }
+
+        .highlight-list li i {
+            color: var(--accent);
+            font-size: 0.8rem;
+        }
+
+        /* Education Items */
+        .edu-item {
+            margin-bottom: 20px;
+            padding-left: 20px;
+            border-left: 3px solid var(--accent);
+        }
+
+        .edu-degree {
+            font-weight: 600;
+            color: var(--primary);
+            font-size: 1rem;
+        }
+
+        .edu-institution {
+            color: var(--accent);
+            font-size: 0.9rem;
+            margin: 3px 0;
+        }
+
+        .edu-year {
+            color: var(--gray);
+            font-size: 0.85rem;
+        }
+
+        .edu-details {
+            color: var(--gray);
+            font-size: 0.85rem;
+            font-style: italic;
+            margin-top: 5px;
+        }
+
+        .badge {
+            display: inline-block;
+            background: var(--accent);
+            color: white;
+            padding: 2px 8px;
+            border-radius: 12px;
+            font-size: 0.7rem;
+            margin-left: 8px;
+            font-weight: 600;
+        }
+
+        .badge.pending {
+            background: #ed8936;
+        }
+
+        .badge.current {
+            background: #38a169;
+        }
+
+        /* Experience */
+        .exp-item {
+            margin-bottom: 20px;
+        }
+
+        .exp-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            margin-bottom: 8px;
+        }
+
+        .exp-title {
+            font-weight: 600;
+            color: var(--primary);
+        }
+
+        .exp-company {
+            color: var(--accent);
+            font-size: 0.9rem;
+        }
+
+        .exp-date {
+            color: var(--gray);
+            font-size: 0.85rem;
+            white-space: nowrap;
+        }
+
+        .exp-description {
+            color: var(--dark);
+            font-size: 0.9rem;
+            line-height: 1.6;
+        }
+
+        .exp-list {
+            list-style: none;
+            margin-top: 8px;
+        }
+
+        .exp-list li {
+            padding-left: 15px;
+            position: relative;
+            margin-bottom: 5px;
+            font-size: 0.9rem;
+            color: var(--dark);
+        }
+
+        .exp-list li::before {
+            content: "▸";
+            position: absolute;
+            left: 0;
+            color: var(--accent);
+        }
+
+        /* Teaching Table */
+        .teaching-table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 0.85rem;
+        }
+
+        .teaching-table th {
+            background: var(--primary);
+            color: white;
+            padding: 10px;
+            text-align: left;
+            font-weight: 500;
+        }
+
+        .teaching-table td {
+            padding: 10px;
+            border-bottom: 1px solid var(--light-gray);
+        }
+
+        .teaching-table tr:nth-child(even) {
+            background: #f7fafc;
+        }
+
+        /* Skills Section (Right Column) */
+        .skill-category {
+            margin-bottom: 25px;
+        }
+
+        .skill-category-title {
+            font-weight: 600;
+            color: var(--primary);
+            font-size: 0.95rem;
+            margin-bottom: 10px;
+        }
+
+        .skill-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+        }
+
+        .skill-tag {
+            background: var(--white);
+            color: var(--primary);
+            padding: 6px 12px;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            border: 1px solid var(--accent);
+            transition: all 0.3s;
+        }
+
+        .skill-tag:hover {
+            background: var(--accent);
+            color: white;
+        }
+
+        /* Tools */
+        .tool-item {
+            background: var(--white);
+            padding: 12px;
+            border-radius: 8px;
+            margin-bottom: 10px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+        }
+
+        .tool-name {
+            font-weight: 600;
+            color: var(--primary);
+            font-size: 0.9rem;
+        }
+
+        .tool-level {
+            color: var(--gray);
+            font-size: 0.8rem;
+        }
+
+        .tool-bar {
+            height: 4px;
+            background: var(--light-gray);
+            border-radius: 2px;
+            margin-top: 8px;
+            overflow: hidden;
+        }
+
+        .tool-progress {
+            height: 100%;
+            background: linear-gradient(90deg, var(--accent), var(--primary));
+            border-radius: 2px;
+        }
+
+        /* Congress Section */
+        .congress-item {
+            background: #f7fafc;
+            padding: 12px;
+            border-radius: 8px;
+            margin-bottom: 10px;
+            border-left: 3px solid var(--accent);
+        }
+
+        .congress-name {
+            font-weight: 600;
+            color: var(--primary);
+            font-size: 0.9rem;
+        }
+
+        .congress-details {
+            color: var(--gray);
+            font-size: 0.8rem;
+            margin-top: 3px;
+        }
+
+        .congress-type {
+            display: inline-block;
+            background: var(--accent);
+            color: white;
+            padding: 2px 8px;
+            border-radius: 10px;
+            font-size: 0.7rem;
+            margin-top: 5px;
+        }
+
+        /* Social Links */
+        .social-links {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        .social-link {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            background: var(--white);
+            padding: 12px;
+            border-radius: 8px;
+            text-decoration: none;
+            color: var(--primary);
+            transition: all 0.3s;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+        }
+
+        .social-link:hover {
+            transform: translateX(5px);
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+        }
+
+        .social-link i {
+            font-size: 1.2rem;
+            color: var(--accent);
+        }
+
+        .social-link span {
+            font-size: 0.85rem;
+        }
+
+        /* Print Styles */
+        @media print {
+            body {
+                background: white;
+                padding: 0;
+            }
+            
+            .cv-container {
+                box-shadow: none;
+            }
+
+            .section {
+                page-break-inside: avoid;
+            }
+        }
+
+        @page {
+            size: A4;
+            margin: 0;
+        }
+    </style>
+</head>
+<body>
+    <div class="cv-container">
+        <!-- Header -->
+        <header class="header">
+            <div class="photo-container">
+                <img src="foto.png" alt="Víctor Garrido" class="photo">
+            </div>
+            <div class="header-info">
+                <h1 class="name">VÍCTOR GARRIDO</h1>
+                <p class="title">Desarrollador de Tecnología Deportiva | Desarrollador de Software | Docente e Investigador en Ciencias del Deporte</p>
+                <div class="contact-bar">
+                    <div class="contact-item">
+                        <i class="fas fa-envelope"></i>
+                        <a href="mailto:vgarrido@fitbike.cl">vgarrido@fitbike.cl</a>
+                    </div>
+                    <div class="contact-item">
+                        <i class="fas fa-phone"></i>
+                        <span>+56 9 2171 1836</span>
+                    </div>
+                    <div class="contact-item">
+                        <i class="fas fa-map-marker-alt"></i>
+                        <span>Chile</span>
+                    </div>
+                </div>
+            </div>
+        </header>
+
+        <div class="main-content">
+            <!-- Left Column -->
+            <div class="left-column">
+                <!-- Profile -->
+                <section class="section">
+                    <h2 class="section-title"><i class="fas fa-user"></i> Perfil Profesional</h2>
+                    <p class="profile-text">
+                        Docente universitario y profesional de las Ciencias del Deporte con formación de posgrado, especializado en <strong>biomecánica aplicada</strong>, <strong>medición de la fuerza</strong>, <strong>valoración funcional</strong> y <strong>análisis del rendimiento humano</strong>. Trayectoria que integra docencia universitaria, investigación científica, desarrollo tecnológico y práctica profesional en deporte de alto rendimiento.
+                    </p>
+                    <ul class="highlight-list">
+                        <li><i class="fas fa-check-circle"></i> Docencia universitaria</li>
+                        <li><i class="fas fa-check-circle"></i> Investigación científica</li>
+                        <li><i class="fas fa-check-circle"></i> Desarrollo tecnológico</li>
+                        <li><i class="fas fa-check-circle"></i> Deporte de alto rendimiento</li>
+                    </ul>
+                </section>
+
+                <!-- Education -->
+                <section class="section">
+                    <h2 class="section-title"><i class="fas fa-graduation-cap"></i> Formación Académica</h2>
+                    
+                    <div class="edu-item">
+                        <div class="edu-degree">Doctorado en Educación — Ciencias del Deporte <span class="badge pending">Postulación pendiente</span></div>
+                        <div class="edu-institution">Universidad de Almería, España</div>
+                        <div class="edu-year">Matrícula programada: Enero 2026</div>
+                        <div class="edu-details">Director: Dr. Alejandro Pérez Castilla | Línea: Biomecánica aplicada y medición de la fuerza</div>
+                    </div>
+
+                    <div class="edu-item">
+                        <div class="edu-degree">Doctorado en Bioingeniería <span class="badge">2 semestres cursados</span></div>
+                        <div class="edu-institution">Universidad de O'Higgins, Chile</div>
+                        <div class="edu-year">2021</div>
+                    </div>
+
+                    <div class="edu-item">
+                        <div class="edu-degree">Máster en Rendimiento Deportivo: Entrenamiento y Valoración Funcional</div>
+                        <div class="edu-institution">Universidad Europea del Atlántico</div>
+                        <div class="edu-year">En proceso de titulación</div>
+                    </div>
+
+                    <div class="edu-item">
+                        <div class="edu-degree">Máster Universitario en Deportes de Resistencia</div>
+                        <div class="edu-institution">UCAM - Universidad Católica de Murcia</div>
+                        <div class="edu-year">2024</div>
+                    </div>
+
+                    <div class="edu-item">
+                        <div class="edu-degree">Licenciatura en Ciencias del Deporte</div>
+                        <div class="edu-institution">Universidad Santo Tomás, Santiago de Chile</div>
+                        <div class="edu-year">2018</div>
+                    </div>
+                </section>
+
+                <!-- Teaching Experience -->
+                <section class="section">
+                    <h2 class="section-title"><i class="fas fa-chalkboard-teacher"></i> Experiencia Docente</h2>
+                    
+                    <div class="exp-item">
+                        <div class="exp-header">
+                            <div>
+                                <div class="exp-title">Docente Universitario</div>
+                                <div class="exp-company">Universidad de las Américas (UDLA)</div>
+                            </div>
+                        </div>
+                        <table class="teaching-table">
+                            <thead>
+                                <tr>
+                                    <th>Asignatura</th>
+                                    <th>Estado</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>Deportes de Resistencia</td>
+                                    <td><span class="badge current">Actual</span></td>
+                                </tr>
+                                <tr>
+                                    <td>Bioquímica del Ejercicio</td>
+                                    <td>Impartida</td>
+                                </tr>
+                                <tr>
+                                    <td>Evaluación y Control del Entrenamiento</td>
+                                    <td>Impartida</td>
+                                </tr>
+                                <tr>
+                                    <td>Introducción al Entrenamiento</td>
+                                    <td>Impartida</td>
+                                </tr>
+                                <tr>
+                                    <td>Ética Deportiva</td>
+                                    <td>Impartida</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+
+                </section>
+
+                <!-- Professional Experience -->
+                <section class="section">
+                    <h2 class="section-title"><i class="fas fa-briefcase"></i> Experiencia Profesional</h2>
+                    
+                    <div class="exp-item">
+                        <div class="exp-header">
+                            <div>
+                                <div class="exp-title">Fundador</div>
+                                <div class="exp-company">Garrido Tecnología Deportiva</div>
+                            </div>
+                        </div>
+                        <ul class="exp-list">
+                            <li>Diseño y fabricación de celdas de carga y plataformas de fuerza y contacto</li>
+                            <li>Desarrollo de soluciones para valoración funcional y análisis biomecánico</li>
+                            <li>Integración entre investigación científica, docencia y aplicación práctica</li>
+                        </ul>
+                    </div>
+
+                    <div class="exp-item">
+                        <div class="exp-header">
+                            <div>
+                                <div class="exp-title">Preparador Físico y Asesor en Rendimiento Deportivo</div>
+                            </div>
+                            <div class="exp-date">2017 - Presente</div>
+                        </div>
+                        <ul class="exp-list">
+                            <li>Boxeadores profesionales y deportistas de alto rendimiento</li>
+                            <li>Triatletas, ciclistas y atletas</li>
+                            <li>Población orientada a salud</li>
+                            <li>Aplicación de principios de biomecánica, medición de fuerza y control del entrenamiento</li>
+                        </ul>
+                    </div>
+                </section>
+
+                <!-- Publications -->
+                <section class="section">
+                    <h2 class="section-title"><i class="fas fa-book"></i> Publicaciones Científicas (8)</h2>
+                    
+                    <div class="edu-item">
+                        <div class="edu-degree">Validation of the G-Force Platform for Isometric Tests in Physically Active Young Adults: A Pilot Study</div>
+                        <div class="edu-institution">Applied Sciences</div>
+                        <div class="edu-year">2025</div>
+                    </div>
+
+                    <div class="edu-item">
+                        <div class="edu-degree">Reliability and Repeatability of the Low-Cost G-Force Load Cell System in Isometric Hip Abduction and Adduction Tests</div>
+                        <div class="edu-institution">Applied Sciences</div>
+                        <div class="edu-year">2025</div>
+                    </div>
+
+                    <div class="edu-item">
+                        <div class="edu-degree">Effects of 12 Weeks of Interval Block Resistance Training Versus Circuit Resistance Training on Body Composition, Performance, and Autonomic Recovery</div>
+                        <div class="edu-institution">Journal of Functional Morphology and Kinesiology</div>
+                        <div class="edu-year">2025</div>
+                    </div>
+
+                    <div class="edu-item">
+                        <div class="edu-degree">Physical performance in the health environment: an undervalued practical and inexpensive tool</div>
+                        <div class="edu-institution">Perspectives in Public Health</div>
+                        <div class="edu-year">2024</div>
+                    </div>
+
+                    <div class="edu-item">
+                        <div class="edu-degree">Valores de referencia para la prueba de 5000 metros en atletas chilenos de 35 a 74 años</div>
+                        <div class="edu-institution">Revista Retos</div>
+                        <div class="edu-year">2024</div>
+                    </div>
+
+                    <div class="edu-item">
+                        <div class="edu-degree">Valores de referencia para la prueba de carrera de 1500 metros en atletas chilenos de 35 a 44 años</div>
+                        <div class="edu-institution">Revista Retos</div>
+                        <div class="edu-year">2023</div>
+                    </div>
+
+                    <div class="edu-item">
+                        <div class="edu-degree">Reference values for 800-meter run test in Chilean athletes from 35 to 44 years</div>
+                        <div class="edu-institution">Revista Retos</div>
+                        <div class="edu-year">2023</div>
+                    </div>
+
+                    <div class="edu-item">
+                        <div class="edu-degree">Sustancias dopantes y su prevalencia en el deporte chileno: un estudio observacional</div>
+                        <div class="edu-institution">Revista Retos</div>
+                        <div class="edu-year">2023</div>
+                    </div>
+                </section>
+            </div>
+
+            <!-- Right Column -->
+            <div class="right-column">
+                <!-- Areas of Expertise -->
+                <section class="section">
+                    <h2 class="section-title"><i class="fas fa-star"></i> Especialización</h2>
+                    <div class="skill-tags">
+                        <span class="skill-tag">Biomecánica Aplicada</span>
+                        <span class="skill-tag">Medición de Fuerza</span>
+                        <span class="skill-tag">Valoración Funcional</span>
+                        <span class="skill-tag">Análisis del Rendimiento</span>
+                        <span class="skill-tag">Deportes de Resistencia</span>
+                        <span class="skill-tag">Deportes de Combate</span>
+                        <span class="skill-tag">Desarrollo Tecnológico</span>
+                        <span class="skill-tag">Ciencias del Ejercicio</span>
+                    </div>
+                </section>
+
+                <!-- Technical Skills -->
+                <section class="section">
+                    <h2 class="section-title"><i class="fas fa-tools"></i> Herramientas</h2>
+                    
+                    <div class="tool-item">
+                        <div class="tool-name">TrainingPeaks</div>
+                        <div class="tool-level">Nivel avanzado</div>
+                        <div class="tool-bar">
+                            <div class="tool-progress" style="width: 90%;"></div>
+                        </div>
+                    </div>
+
+                    <div class="tool-item">
+                        <div class="tool-name">WKO5</div>
+                        <div class="tool-level">Análisis avanzado de datos</div>
+                        <div class="tool-bar">
+                            <div class="tool-progress" style="width: 85%;"></div>
+                        </div>
+                    </div>
+
+                    <div class="tool-item">
+                        <div class="tool-name">Python</div>
+                        <div class="tool-level">Desarrollo de software, análisis de datos y biomecánica</div>
+                        <div class="tool-bar">
+                            <div class="tool-progress" style="width: 85%;"></div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Congresses -->
+                <section class="section">
+                    <h2 class="section-title"><i class="fas fa-microphone-alt"></i> Congresos</h2>
+                    
+                    <div class="congress-item">
+                        <div class="congress-name">Congreso de Medicina del Deporte</div>
+                        <div class="congress-details">2025</div>
+                        <span class="congress-type">Expositor</span>
+                    </div>
+
+                    <div class="congress-item">
+                        <div class="congress-name">Congreso de Salud - UOH</div>
+                        <div class="congress-details">2024</div>
+                        <span class="congress-type">Póster científico</span>
+                    </div>
+
+                    <div class="congress-item">
+                        <div class="congress-name">Congreso Int. Deportes de Combate</div>
+                        <div class="congress-details">2020, 2021, 2022</div>
+                        <span class="congress-type">Expositor</span>
+                    </div>
+                </section>
+
+                <!-- Social/Academic Links -->
+                <section class="section">
+                    <h2 class="section-title"><i class="fas fa-link"></i> Perfiles Académicos</h2>
+                    <div class="social-links">
+                        <a href="https://orcid.org/0009-0009-4344-561X" target="_blank" class="social-link">
+                            <i class="fab fa-orcid"></i>
+                            <span>ORCID</span>
+                        </a>
+                        <a href="https://scholar.google.com/citations?user=RzVF3zMAAAAJ&hl=es" target="_blank" class="social-link">
+                            <i class="fas fa-graduation-cap"></i>
+                            <span>Google Scholar</span>
+                        </a>
+                        <a href="https://www.researchgate.net/profile/Victor-Garrido-9" target="_blank" class="social-link">
+                            <i class="fab fa-researchgate"></i>
+                            <span>ResearchGate</span>
+                        </a>
+                    </div>
+                </section>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
